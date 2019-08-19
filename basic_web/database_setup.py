@@ -26,6 +26,15 @@ class Project(db.Model):
     description = db.Column(db.String(128))
 
 
+class Employee(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    project_id = db.Column(db.Integer, ForeignKey('project.id'))
+    name = db.Column(db.String(128))
+    title = db.Column(db.String(128))
+    phone = db.Column(db.String(15))
+    seat = db.Column(db.String(10))
+
+
 class Business_unit(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     bu_name = db.Column(db.String(128))

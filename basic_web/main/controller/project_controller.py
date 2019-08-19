@@ -1,15 +1,9 @@
 from flask import request, jsonify, make_response, Blueprint
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
 
 from database_setup import Project
 from main.repository import project_repository
 
 mod_project = Blueprint('project', __name__, url_prefix='/project')
-engine = create_engine('mysql://dotran:Leonardo112019!@localhost/company')
-engine.connect()
-DBSession = sessionmaker(bind=engine)
-session = DBSession()
 
 
 @mod_project.route("/", methods=["POST"])

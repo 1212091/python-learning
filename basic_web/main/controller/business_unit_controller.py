@@ -1,6 +1,4 @@
 from flask import Blueprint, request, jsonify, make_response, abort
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm.exc import NoResultFound
 
 from database_setup import Business_unit
@@ -9,10 +7,6 @@ from main.repository import business_unit_repository
 from main.validator.business_unit_validator import BusinessUnitInputs
 
 mod_business_unit = Blueprint('business_unit', __name__, url_prefix='/bu')
-engine = create_engine('mysql://dotran:Leonardo112019!@localhost/company')
-engine.connect()
-DBSession = sessionmaker(bind=engine)
-session = DBSession()
 
 
 @mod_business_unit.route("/", methods=["POST"])
